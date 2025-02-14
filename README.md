@@ -1,4 +1,7 @@
 
+# DSAPrep
+This repo is for solving DSA questions and taking the notes.
+
 ### ProblemsDSA
 This folder contains various DSA problems categorized by topic:
 - **Array**: Solutions and notes related to array manipulation and algorithms.
