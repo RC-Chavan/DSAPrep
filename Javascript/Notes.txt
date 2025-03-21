@@ -1,0 +1,250 @@
+What is javascript ?
+- JS is a synchronous which means it runs one command at a time, its a single threaded, lightweight, it uses top-down execution approach, However, it can also exhibit asynchronous behavior through features like promises and callbacks, which allow tasks to be initiated and other tasks to proceed while waiting for the initiated task to complete.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+What is synchronous ?
+- Synchronous programming is a programming paradigm that executes tasks one after another, in a sequential manner.
+
+example:
+
+let a = 10;
+let b = 20;
+let c = a + b;
+console.log(c);
+
+Output: 30
+
+----------------------------------------------------------------------------------------------------------------------
+
+What is asynchronous ?
+- Asynchronous programming is a programming paradigm that allows a program to execute multiple tasks concurrently, without blocking the execution of the main thread.
+
+example:
+
+let a = 10;
+let b = 20;
+let c = a + b;
+setTimeout(() => {
+    console.log(c);
+}, 1000);
+
+Output: After 1 second, the value of c will be displayed in the console. i.e. 30
+
+----------------------------------------------------------------------------------------------------------------------
+
+What is Execution Context ?
+- Execution context is the environment in which a program runs, it contains the variables, functions, and objects that are used to execute the code.
+
+--------------------------------------------------------------------------------------------------------------------
+
+What is callback ?
+- Callback is a function passed as an argument to another function, which is executed after the execution of another function.
+
+example_1 : (Simple and basic)
+
+setTimeout(() => {
+    console.log("Hello");
+}, 1000);
+
+Output: After 1 second, the message "Hello" will be displayed in the console.
+
+----------------------------------------------------------------------------------------------------------------------
+
+example_2 : (separate functions)
+
+function sum(a, b, callback) {
+    let c = a + b;
+    callback(c);
+
+}
+
+function callback (result) {
+    console.log(result);
+}
+
+sum(10, 20, callback);
+
+Output: 30
+
+----------------------------------------------------------------------------------------------------------------------
+
+Are callbacks asynchronous ?
+- Yes, they are asynchronous as they are executed after the execution of another function.
+
+----------------------------------------------------------------------------------------------------------------------
+
+What is promise ?
+- A promise is an object that represents the eventual completion or failure of an asynchronous operation, and its result, Its retunerns either a value or an error.
+
+example:
+
+const promise = new Promise((resolve, reject) => {
+    // Perform some asynchronous operation
+    if (success) {
+        resolve("Success");
+    } else {
+        reject("Error");
+    }
+})
+
+promise.then((result) => {
+    // Handle success
+    console.log(result);
+}).catch((error) => {
+    // Handle error
+    console.error(error);
+});
+
+Output: Success
+
+----------------------------------------------------------------------------------------------------------------------
+
+What is the Event Loop?
+- The event loop is a core part of how JavaScript works, especially when dealing with tasks that don’t happen right away, like waiting for data from a server. It helps JavaScript run smoothly without freezing up while waiting for these tasks to finish.
+
+How It Works - 
+
+    Asynchronous Operations: In JavaScript, some operations take time to complete, like fetching data from the internet. Instead of stopping everything while waiting, JavaScript uses the event loop to keep things moving.
+
+    Task Queue and Callback Stack:
+    Task Queue: This is like a line where tasks wait to be done. When you have a task (like a timer or a request), it goes to the end of this queue.
+
+    Callback Stack: This is where functions (callbacks) wait to be executed. When you have a callback ready to run, it goes to the end of this stack.
+
+    Checking for Tasks:
+        The event loop constantly checks the task queue for any tasks that need to be executed.
+        If there’s a task in the queue, it takes that task out and runs it.
+
+    Executing Callbacks:
+
+    After handling a task, the event loop looks at the callback stack.
+    If there’s a callback in the stack, it removes it and runs that function.
+
+    Stopping Condition:
+
+    If both the task queue and the callback stack are empty (meaning there’s nothing left to do), the event loop stops running until new tasks or callbacks come in.
+
+    Repeating the Process:
+
+    The event loop keeps repeating these steps (checking for tasks, executing them, and running callbacks) until all tasks and callbacks are finished.
+
+Why is it important ?
+- The event loop allows JavaScript to be non-blocking. This means your web page can stay responsive while waiting for things like user input or data from an API. Instead of freezing up, it can keep running other code until everything is ready.
+
+Example
+    Imagine you’re baking cookies:
+    You put cookies in the oven (this is like adding a task).
+    While they bake, you clean up your kitchen (this is like executing other code).
+    Once they’re done baking (the task is complete), you take them out and enjoy them (this is like executing a callback).
+
+------------------------------------------------------------------------------------------------------------------------
+
+SOLID principles with example 
+
+SOLID Principles
+
+- The Single Responsibility Principle (SRP): A class should have a single responsibility, which is to perform a specific task.
+
+- The Open/Closed Principle (OCP): A class should be open for extension but closed for modification.
+
+- The Liskov Substitution Principle (LSP): A subclass should be substitutable for its superclass.
+
+- The Interface Segregation Principle (ISP): A class should not be forced to depend on methods it doesn’t use.
+
+- The Dependency Inversion Principle (DIP): High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+example:
+
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    introduce() {
+        console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+    }
+}
+
+class Student extends Person {
+    constructor(name, age, studentId) {
+        super(name, age);
+        this.studentId = studentId;
+    }
+
+    study() {
+        console.log(`${this.name} is studying.`);
+    }
+}
+
+const person = new Person("John", 30);
+person.introduce(); // Output: Hello, my name is John and I'm 30 years old.
+
+const student = new Student("Alice", 20, "12345");
+student.introduce(); // Output: Hello, my name is Alice and I'm 20 years old.
+student.study(); // Output: Alice is studying.
+
+------------------------------------------------------------------------------------------------------------------------
+
+explain promises in js :-
+
+
+
+Okay, first of all good evening, I am rohit chavan, i am currently working with abc lab pvt. ltd. as a sr. backend engineer. I carry 3.5 years of experience. while i joined abc as the trainee developer later i got promoted as the backend developer, then after one and half year i got promoted as sr. backend engineer. i have worked on multiple project here. talking about my projects here in abc. first I was in a integrations team there I was responsible for integrating the API's with third party clients. later I shifted to the oem team there I worked on major end-to-end projects which impact the oem's service very powerfully. implemented the kyc process, otv (other territory vehicle ) feature which checks if the the vehicles comes under the service stations territory if yes then we provide access of that particular vehicle to that service station account and the herarchi of the oem, i.e. the ASM, TSM, ZSM. and after that vehicles passes by or exited that territory we log that time and after one threashold we remove the access from that particular service station and the herarchi of the oem too, i am just explaining you one project also i have worked on multile impactful projects there. loooking at time constraint i am not explaining it here, if you have any doubt in any project i am free to discuss.
+talking about my roles an dresponsibilities i was involved in planning , desinging, implementing and deploying the product end to end.
+
+
+
+Thank you for your introduction, Rohit. Your experience sounds impressive, especially your work on the OEM projects. Let's dive into some technical questions to assess your knowledge and problem-solving skills.
+
+Technical Questions
+Can you explain how Node.js handles concurrency despite being single-threaded?
+What are some common issues you have encountered when integrating APIs with third-party clients, and how did you resolve them?
+In your experience, what are the advantages of using asynchronous programming in Node.js? Can you provide an example where it significantly improved performance?
+How would you design a RESTful API for the KYC process you mentioned? What endpoints would you include, and what would their purposes be?
+Can you describe the caching strategies you've implemented in your projects? Why did you choose those strategies, and what impact did they have on performance?
+What is middleware in Express.js, and can you give an example of how you've used it in one of your projects?
+How do you handle error management in your applications? Can you provide a specific example of an error handling strategy you've implemented?
+Could you explain the concept of microservices and how it differs from a monolithic architecture? Have you worked on any microservices-based projects?
+Feel free to answer these questions one by one or let me know if you'd like to focus on a specific area!
+
+
+Proxy vs ReverseProxy vs Load Balancer
+
+Proxy (VPN)
+A proxy acts as an intermediary between a client and a server. It is typically used to protect the client's identity by masking their IP address. Proxies can be used for various purposes, such as bypassing geo-restrictions or filtering content. There are two main types of proxies:
+
+Forward Proxy: Acts on behalf of clients, hiding their IP addresses and allowing them to access restricted content.
+
+Reverse Proxy: Acts on behalf of servers, hiding their IP addresses and improving security and performance.
+
+Reverse Proxy
+A reverse proxy sits between clients and servers, accepting requests from clients and forwarding them to the appropriate server. It can enhance performance by caching frequently requested content and provide security by hiding the server's IP address. Reverse proxies are HTTP-specific and can also perform tasks like SSL termination and web acceleration.
+
+Load Balancer
+A load balancer distributes incoming traffic across multiple servers to ensure no single server becomes overwhelmed. This improves performance, availability, and scalability. Load balancers can operate on various network layers (Layers 3-7 of the OSI model), handling different types of traffic, including HTTP, DNS.
+
+Introduction to the OSI Model
+Imagine you want to send a letter to your friend who lives in another city. You write the letter, put it in an envelope, address it, and give it to a mail service. The mail service takes care of getting the letter to your friend. The OSI model is like a step-by-step guide on how computers communicate with each other, similar to how the mail service helps deliver your letter.
+
+The 7 Layers of the OSI Model
+1. Physical Layer (Layer 1)
+This is the bottom layer. It's like the roads and highways that the mail trucks use to travel. The physical layer deals with the actual cables, Wi-Fi signals, or other ways that computers connect to each other.
+2. Data Link Layer (Layer 2)
+Think of this layer as the mail trucks themselves. They carry the mail (data) from one place to another within a city. The data link layer ensures that data gets from one device to another on the same network without errors.
+3. Network Layer (Layer 3)
+This layer is like the postal service's sorting office. It figures out the best route for the mail (data) to travel from one city to another. The network layer helps data find its way across different networks.
+4. Transport Layer (Layer 4)
+Imagine this layer as the person who packs the mail into bags and makes sure it arrives safely. The transport layer ensures that data is delivered correctly and in the right order.
+5. Session Layer (Layer 5)
+This layer is like setting up a meeting between you and your friend. It helps start, manage, and end conversations between computers.
+6. Presentation Layer (Layer 6)
+Think of this layer as a translator. It makes sure that the data is in a format that both computers can understand, like translating a letter from one language to another.
+7. Application Layer (Layer 7)
+This is the top layer, where you actually write and send the letter. It's where applications like email or web browsers interact with the network to send and receive data.
+
+How It Works Together
+When you send data over the internet, it goes through all these layers one by one, starting from the top (Application Layer) and moving down to the bottom (Physical Layer). Then, it travels to the other computer and goes back up the layers to reach the application.
+
+This process helps ensure that data is delivered correctly and efficiently, just like how the mail service helps deliver your letter to your friend.
