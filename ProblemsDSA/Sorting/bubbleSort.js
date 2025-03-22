@@ -1,17 +1,24 @@
 /**
  *  Bubble Sort
  *  Time Complexity: O(n^2)
+ *  Best Case : O(n)
+ *  Worst Case : O(n^2)
  *  Space Complexity: O(1)
  */
 
 function bubbleSort(arr) {
     for (let i = 0; i < arr.length; i++) {
+        let didSwap = 0
         for (let j = 0; j < arr.length; j++) {
             if (arr[j] < arr[j - 1]) {
                 let temp = arr[j - 1];
                 arr[j - 1] = arr[j];
                 arr[j] = temp;
+                didSwap+=1;
             }
+        }
+        if (didSwap === 0) {
+            break;
         }
     }
     return arr;
