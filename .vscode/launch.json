@@ -13,6 +13,16 @@
             ],
             "runtimeExecutable": "/Users/rohitchavan/.nvm/versions/node/v22.14.0/bin/node",
             "program": "${workspaceFolder}/ProblemsDSA/Sorting/selectionSort.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "bubbleSort",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "runtimeExecutable": "/Users/rohitchavan/.nvm/versions/node/v22.14.0/bin/node",
+            "program": "${workspaceFolder}/ProblemsDSA/Sorting/bubbleSort.js"
         }
     ]
 }
